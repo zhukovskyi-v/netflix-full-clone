@@ -16,6 +16,7 @@ export default function Signup() {
 
   const isInvalid =
     firstName === '' || password === '' || email === ''
+  console.log(isInvalid)
   const handleSignup = (event) => {
     event.preventDefault()
     firebase
@@ -50,9 +51,7 @@ export default function Signup() {
             <Form.Input
               placeholder="First name"
               value={firstName}
-              onChange={({ target }) =>
-                setFirstName(target.value)
-              }
+              onChange={({ target }) => setFirstName(target.value)}
             />
             <Form.Input
               placeholder="Email address"
@@ -64,9 +63,7 @@ export default function Signup() {
               value={password}
               autoComplete="off"
               placeholder="Password"
-              onChange={({ target }) =>
-                setPassword(target.value)
-              }
+              onChange={({ target }) => setPassword(target.value)}
             />
             <Form.Submit
               disabled={isInvalid}
@@ -79,9 +76,7 @@ export default function Signup() {
 
           <Form.Text>
             Already a user?{' '}
-            <Form.Link to={ROUTERS.SIGN_IN}>
-              Sign in now.
-            </Form.Link>
+            <Form.Link to={ROUTERS.SIGN_IN}>Sign in now.</Form.Link>
           </Form.Text>
           <Form.TextSmall>
             This page is protected by Google reCAPTCHA to ensure

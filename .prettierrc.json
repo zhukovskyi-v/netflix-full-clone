@@ -1,6 +1,6 @@
 {
   "tabWidth": 2,
-  "printWidth": 60,
+  "printWidth": 68,
   "semi": false,
   "singleQuote": true,
   "trailingComma": "es5"

@@ -9,11 +9,12 @@ import * as ROUTERS from '../constans/routes'
 export default function Signin() {
   const history = useHistory()
   const { firebase } = useContext(FirebaseContext)
-  const [email, setEmail] = useState()
-  const [password, setPassword] = useState()
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
   const [error, setError] = useState('')
 
   const isInvalid = password === '' || email === ''
+
   const handleSignIn = (event) => {
     event.preventDefault()
     //firebase
@@ -21,7 +22,6 @@ export default function Signin() {
       .auth()
       .signInWithEmailAndPassword(email, password)
       .then((el) => {
-        console.log(el.user.displayName + ' ' + el.user.photoURL)
         localStorage.setItem('userInfo', JSON.stringify(el))
         history.push(ROUTERS.BROWSE)
       })
@@ -49,9 +49,7 @@ export default function Signin() {
               autoComplete="off"
               placeholder="Password"
               value={password}
-              onChange={({ target }) =>
-                setPassword(target.value)
-              }
+              onChange={({ target }) => setPassword(target.value)}
             />
             <Form.Submit disabled={isInvalid} type="submit">
               Sign In
@@ -61,8 +59,8 @@ export default function Signin() {
             New to Netflix?
             <Form.Link to="/signup">Sing Up now.</Form.Link>
             <Form.TextSmall>
-              This page is protected by Google reCAPTCHA to
-              ensure you're not a bot.
+              This page is protected by Google reCAPTCHA to ensure
+              you're not a bot.
               <Form.Link to="">Learn more.</Form.Link>
             </Form.TextSmall>
           </Form.Text>
