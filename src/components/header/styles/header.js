@@ -11,10 +11,9 @@ export const Background = styled.div`
       rgba(0, 0, 0, 0.35)
     ),
     url(${({ src }) =>
-        src
-          ? `../images/misc/${src}.jpg`
-          : '../images/misc/home-bg.jpg'})
+        src ? `${src}` : '../images/misc/home-bg.jpg'})
       top left / cover no-repeat;
+  margin-bottom: ${({ src }) => (src ? `50px` : 0)};
   @media (max-width: 1100px) {
     ${({ dontShowOnSmallViewPort }) =>
       dontShowOnSmallViewPort && `background: none;`}

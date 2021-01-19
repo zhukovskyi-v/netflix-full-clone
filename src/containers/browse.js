@@ -9,6 +9,7 @@ import logo from '../netflix.svg'
 import Card from '../components/card'
 import { FooterContainer } from './footer'
 import Player from '../components/player'
+import { filmTitle, filmDescr, filmImg } from '../lib/featureFilm'
 
 export default function BrowseContainer({ slides }) {
   const [category, setCategory] = useState('series')
@@ -32,10 +33,10 @@ export default function BrowseContainer({ slides }) {
 
   useEffect(() => {
     const fuse = new Fuse(slideRows, {
-      keys: ['data.description', 'data:title', 'data.genre'],
+      keys: ['data.description', 'data.title', 'data.genre'],
     })
     const results = fuse.search(searchTerm).map(({ item }) => item)
-    console.log(results)
+
     if (
       slideRows.length > 0 &&
       searchTerm.length > 3 &&
@@ -54,7 +55,8 @@ export default function BrowseContainer({ slides }) {
       ) : (
         <Loading.ReleaseBody />
       )}
-      <Header src="joker1" dontShowOnSmallViewPort>
+
+      <Header src={filmImg} dontShowOnSmallViewPort>
         <Header.Frame>
           <Header.Group>
             <Header.Logo
@@ -67,7 +69,7 @@ export default function BrowseContainer({ slides }) {
               onClick={() => setCategory('series')}
             >
               Series
-            </Header.TextLink>{' '}
+            </Header.TextLink>
             <Header.TextLink
               active={category === 'films' ? 'true' : 'false'}
               onClick={() => setCategory('films')}
@@ -100,19 +102,16 @@ export default function BrowseContainer({ slides }) {
             </Header.Profile>
           </Header.Group>
         </Header.Frame>
+
         <Header.Feature>
           <Header.FeatureCallOut>
-            Watch Joker now.
+            Watch {filmTitle} Now
           </Header.FeatureCallOut>
-          <Header.Text>
-            Set in 1981, it follows Arthur Fleck, a failed clown and
-            stand-up comedian whose descent into insanity and
-            nihilism inspires a violent counter-cultural revolution
-            against the wealthy in a decaying Gotham City.
-          </Header.Text>
+          <Header.Text>{filmDescr}</Header.Text>
           <Header.PlayButton>Play</Header.PlayButton>
         </Header.Feature>
       </Header>
+
       <Card.Group>
         {slideRows.map((slideItem) => (
           <Card
@@ -135,7 +134,7 @@ export default function BrowseContainer({ slides }) {
             <Card.Feature category={category}>
               <Player>
                 <Player.Button />
-                <Player.Video src="videos/bunny.mp4" />
+                <Player.Video src="/videos/bunny.mp4" />
               </Player>
             </Card.Feature>
           </Card>
