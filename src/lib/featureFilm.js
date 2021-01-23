@@ -13,6 +13,7 @@ instance.get(requests.netflixFeatureOriginal).then((res) => {
     res.data.results[
       Math.floor(Math.random() * res.data.results.length - 1)
     ]
+
   filmTitle = film.original_name
   filmDescr = film.overview
   filmImg = filmBaseImgUrl + film.backdrop_path

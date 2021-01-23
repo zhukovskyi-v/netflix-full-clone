@@ -24,7 +24,6 @@ export default function HomePage() {
             <OptForm.Button
               onClick={() => {
                 history.push(ROUTERS.SIGN_UP)
-                console.log(<OptForm.Button />)
               }}
             >
               Try it now

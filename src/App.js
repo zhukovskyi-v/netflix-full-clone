@@ -2,7 +2,6 @@ import React from 'react'
 import { BrowserRouter as Router, Switch } from 'react-router-dom'
 import * as ROUTES from './constans/routes'
 import { Home, Signup, Signin, Browse } from './pages'
-import { firebase } from './lib/firebase.prod'
 import { IsUserRedirect, ProtectedRoute } from './helpers/routes'
 import { useAuthListener } from './hooks/use-auth-listener'
 
